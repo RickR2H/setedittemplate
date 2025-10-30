@@ -1,4 +1,4 @@
-# 📝 Set Edit Template — Joomla Plugin
+# 📝 Set Edit Template — Joomla 5/6 System Plugin
 
 > Clean, distraction-free editing dashboard for frontend content editing.
 
