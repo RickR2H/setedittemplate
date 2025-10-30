@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension version="5.0" type="plugin" group="system" method="upgrade">
+	<name>plg_system_setedittemplate</name>
+	<description>PLG_SYSTEM_SETEDITTEMPLATE_XML_DESCRIPTION</description>
+
+	<author>Rick Spaan - R2H BV</author>
+	<copyright>(C) 2025 R2H BV. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>rick@r2h.nl</authorEmail>
+	<authorUrl>https://r2h.nl</authorUrl>
+
+	<creationDate>2025 okt</creationDate>
+	<version>1.0.0</version>
+
+	<namespace path="src">Joomla\Plugin\System\Setedittemplate</namespace>
+
+	<files>
+		<folder plugin="setedittemplate">services</folder>
+		<folder>src</folder>
+		<folder>language</folder>
+		<file>README.md</file>
+	</files>
+
+	<languages>
+		<language tag="en-GB">language/en-GB/plg_system_setedittemplate.ini</language>
+		<language tag="en-GB">language/en-GB/plg_system_setedittemplate.sys.ini</language>
+	</languages>
+
+	<config>
+		<inlinehelp button="show"/>
+
+		<fields name="params">
+			<fieldset name="basic">
+				<field
+					name="template_style"
+					type="templatestyle"
+					client="site"
+					description="PLG_SYSTEM_SETEDITTEMPLATE_TEMPLATE_DESC"
+					label="PLG_SYSTEM_SETEDITTEMPLATE_TEMPLATE">
+						<option value="">JOPTION_USE_DEFAULT</option>
+				</field>
+				<field
+					name="note"
+					type="note"
+					label="PLG_SYSTEM_SETEDITTEMPLATE_NOTE" />
+				<field
+					name="components"
+					type="text"
+					default=""
+					label="PLG_SYSTEM_SETEDITTEMPLATE_COMPONENTS"
+					description="PLG_SYSTEM_SETEDITTEMPLATE_COMPONENTS_DESC"
+				/>
+				<field
+					name="views"
+					type="text"
+					default=""
+					label="PLG_SYSTEM_SETEDITTEMPLATE_VIEWS"
+					description="PLG_SYSTEM_SETEDITTEMPLATE_VIEWS_DESC"
+				/>
+				<field
+					name="layouts"
+					type="text"
+					default=""
+					label="PLG_SYSTEM_SETEDITTEMPLATE_LAYOUTS"
+					description="PLG_SYSTEM_SETEDITTEMPLATE_LAYOUTS_DESC"
+				/>
+				<field
+					name="disable_modules"
+					type="sql"
+					default="10"
+					label="PLG_SYSTEM_SETEDITTEMPLATE_DISABLE_MODULES"
+					description="PLG_SYSTEM_SETEDITTEMPLATE_DISABLE_MODULES_DESC"
+					query="SELECT id, title FROM #__modules WHERE published = 1 AND client_id = 0"
+					key_field="id"
+					value_field="title"
+					header="PLG_SYSTEM_SETEDITTEMPLATE_MODULES_HEADER"
+					multiple="true"
+					forceMultiple="true"
+					layout="joomla.form.field.list-fancy-select" />
+				<field
+					name="disable_modules_on_template"
+					type="radio"
+					label="PLG_SYSTEM_SETEDITTEMPLATE_DISABLE_MODULES_ON_TEMPLATE"
+					description="PLG_SYSTEM_SETEDITTEMPLATE_DISABLE_MODULES_ON_TEMPLATE_DESC"
+					layout="joomla.form.field.radio.switcher"
+					default="0"
+					filter="boolean"
+					showon="disable_modules!:">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field
+					name="editpage_styling"
+					type="editor"
+					label="PLG_SYSTEM_SETEDITTEMPLATE_STYLING"
+					description="PLG_SYSTEM_SETEDITTEMPLATE_STYLING_DESC"
+					editor="codemirror|none"
+					filter="raw" />
+				<field
+					name="debug"
+					type="radio"
+					label="PLG_SYSTEM_SETEDITTEMPLATE_DEBUG"
+					description="PLG_SYSTEM_SETEDITTEMPLATE_DEBUG_DESC"
+					layout="joomla.form.field.radio.switcher"
+					default="0"
+					filter="boolean">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
